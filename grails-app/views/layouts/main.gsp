@@ -47,7 +47,7 @@
 
 	<div class="title"><h1>Issues</h1></div>
 
-	<div class="subtitle">We keep track of yours so you dont have to</div>
+	<div class="subtitle">We keep track of yours so you don't have to</div>
 
 	<div class="main menu">
 		<ul>

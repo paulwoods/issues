@@ -1,8 +1,8 @@
 package org.mrpaulwoods.issues
 
-class ProjectController {
+class DashboardController {
 
 	def index = {
 	}
-	
+
 }
