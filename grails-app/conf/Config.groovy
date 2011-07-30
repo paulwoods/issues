@@ -110,3 +110,5 @@ log4j = {
 }
 
 grails.gorm.failOnError = true
+
+grails.plugin.cloudfoundry.appname = 'woods-issues'
