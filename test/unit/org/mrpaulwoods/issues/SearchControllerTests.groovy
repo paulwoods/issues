@@ -11,7 +11,13 @@ import org.junit.*
 @TestFor(SearchController)
 class SearchControllerTests {
 
-    void testSomething() {
-
+    @Test
+    public void index() {
+    	controller.index()
+    }
+    
+    @Test
+    public void search() {
+    	controller.search()
     }
 }

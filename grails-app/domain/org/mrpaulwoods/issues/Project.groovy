@@ -13,7 +13,7 @@ class Project {
     }
     
     def getIssues() {
-    	Issue.findByProject this
+    	Issue.findAllByProject this
     }
     
     

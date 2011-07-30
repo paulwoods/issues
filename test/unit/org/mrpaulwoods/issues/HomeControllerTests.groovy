@@ -11,7 +11,8 @@ import org.junit.*
 @TestFor(HomeController)
 class HomeControllerTests {
 
-    void testSomething() {
-
+    @Test
+    public void index() {
+    	controller.index()
     }
 }
