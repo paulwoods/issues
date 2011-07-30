@@ -1,0 +1,8 @@
+.settings
+/target/**
+stacktrace.log
+cobertura.ser
+/web-app/WEB-INF/classes/**
+CodeNarcReport.html
+
+/logs
