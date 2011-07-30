@@ -42,3 +42,17 @@ grails.project.dependency.resolution = {
         build ":tomcat:$grailsVersion"
     }
 }
+
+	
+codenarc.reports = {
+	MyXmlReport('xml') {                    
+		outputFile = 'target/CodeNarcReport.xml'
+		title = 'CuWire'             
+	}
+
+	MyHtmlReport('html') {                  
+		outputFile = 'target/CodeNarcReport.html'
+		title = 'CuWire'
+	}
+}
+
