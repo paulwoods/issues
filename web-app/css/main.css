@@ -77,12 +77,91 @@ a:hover {
 	color: red;
 }
 
-.about td,
-.about th {
-	padding-right: 2em;
-	padding-bottom: 1em;
+table {
+	width:50%;
+}
+
+caption {
+	font-size: 0.75em;
+	text-align: left;
+}
+
+td,
+th {
+
+	padding: 0.25em;
+}
+
+th {
+	background-color: #ddd;
 }
 
 tbody.hover tr:hover {
-	background-color: #eeeeee;
+	background-color: #eee;
+}
+
+#column1 {
+	float:left;
+	width: 200px;
+	border: 2px dotted #888;
+	padding: 0.5em;
+	background-color: #ddd;
+}
+
+#column h1,
+#column1 h2,
+#column1 h3 {
+	margin: 0;
+	padding: 0;
+}
+
+#column1 ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+#column1 li {
+	padding-bottom: 0.5em;
+}
+
+
+#column2 {
+	margin-left:250px;
+}
+
+.paginate {
+	margin-top: 1em;
+	margin-bottom: 1em;
+	text-align: center;
+}
+
+.paginate .prevLink {
+	margin-right: 2em;
+}
+
+.paginate .step {
+	margin-right: 2em;
+}
+
+.paginate .currentStep {
+	margin-right: 1.33em;
+	font-size: 1.5em;
+}
+
+.paginate .nextLink {
+}
+
+th.asc a, th.desc a {
+    background-position: right;
+    background-repeat: no-repeat;
+   	padding-right: 1em;
+}
+
+th.asc a {
+    background-image: url(../images/skin/sorted_asc.gif);
+}
+
+th.desc a {
+    background-image: url(../images/skin/sorted_desc.gif);
 }

@@ -28,6 +28,11 @@ class BootStrap {
 //    		issue1 = new Issue(project:project, name:"start project", description:"create the initial issue tracker")
 //    		issue1.save()
 //    	}
+
+		("A".."Z").each { String name ->
+			Project.addProject(name*20)
+		}
+
     	
     }
     
