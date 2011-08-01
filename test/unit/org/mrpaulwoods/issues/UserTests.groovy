@@ -7,40 +7,19 @@ import org.junit.*
 @Mock(UserRole)
 class UserTests {
 	
-	@Before
-	public void setup() {
-	}
-	
-	@After
-	public void tearDown() {
-	}
-	
     @Test
     public void addUser_new() {
-		boolean called = false
-		User.metaClass.static.encodePassword = { -> called = true}
-
 		assert 0 == User.count()
 		User.addUser("paulwoods")
 		assert 1 == User.count()
-		assert true == called
-
-		GroovySystem.metaClassRegistry.removeMetaClass User.class
     }
 
     @Test
     public void addUser_exists() {
-
-		boolean called = false
-		User.metaClass.static.encodePassword = { -> called = true}
-		
 		def u1 = User.addUser("paulwoods")
 		def u2 = User.addUser("paulwoods")
 		assert 1 == User.count()
 		assert u2 == u1
-		assert true == called
-		
-		GroovySystem.metaClassRegistry.removeMetaClass User.class
     }
     
     @Test
@@ -49,7 +28,8 @@ class UserTests {
     	def user = new User(username:"abc", password:"123")
     	
     	def springSecurityService = mockFor(grails.plugins.springsecurity.SpringSecurityService)
-    	springSecurityService.demand.encodePassword(1..1) { p -> p*2 }
+    	springSecurityService.demand.asBoolean(1..1) { -> true }
+    	springSecurityService.demand.encodePassword(1..1) { String p -> p*2 }
     	user.springSecurityService = springSecurityService.createMock()
     	
     	user.encodePassword()

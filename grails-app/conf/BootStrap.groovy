@@ -19,12 +19,9 @@ class BootStrap {
     }
     
     private void sample1() {
-    
-//    	def project = Project.findByName("issuetracker")
-//    	if(!project) {
-//    		project = new Project(name:"issuetracker")
-//    		project.save()
-//    	}
+    	
+    	def project = Project.addProject("issuetracker")
+    	project.addUser User.findByUsername("paulwoods"), UserProject.Access.Admin
     	
 //    	def issue1 = Issue.findByProjectAndName(project, "start project")
 //    	if(!issue1) {

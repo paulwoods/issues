@@ -27,8 +27,6 @@ class UserRoleTests {
 	public void tearDown() {
 		GroovySystem.metaClassRegistry.removeMetaClass User.class
 	}
-			
-
 	
     @Test
     public void addUserRole_new() {

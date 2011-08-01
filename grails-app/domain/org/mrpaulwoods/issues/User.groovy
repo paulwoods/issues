@@ -3,7 +3,9 @@ package org.mrpaulwoods.issues
 class User {
 
 	def springSecurityService
-
+	
+	static transients = [ "authorities" ]
+	
 	String username
 	String password
 	boolean enabled = true
@@ -35,7 +37,9 @@ class User {
 	}
 
 	private void encodePassword() {
-		password = springSecurityService.encodePassword(password)
+		if(springSecurityService) { // for unit testing only
+			password = springSecurityService.encodePassword(password)
+		}
 	}
 	
 	static User addUser(String username) {
