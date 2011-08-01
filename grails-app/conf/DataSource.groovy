@@ -1,32 +1,37 @@
 dataSource {
-    pooled = true
-    driverClassName = "org.h2.Driver"
-    username = "sa"
-    password = ""
+	dialect = org.hibernate.dialect.MySQLInnoDBDialect
+	username = "issues"
+	password = "issues"
+	driverClassName = "com.mysql.jdbc.Driver"
 }
+
 hibernate {
-    cache.use_second_level_cache = true
-    cache.use_query_cache = true
-    cache.provider_class = 'net.sf.ehcache.hibernate.EhCacheProvider'
+	cache.use_second_level_cache = true
+	cache.use_query_cache = true
+	cache.provider_class = "net.sf.ehcache.hibernate.EhCacheProvider"
 }
-// environment specific settings
+
 environments {
-    development {
-        dataSource {
-            dbCreate = "create-drop" // one of 'create', 'create-drop', 'update', 'validate', ''
-            url = "jdbc:h2:mem:devDb"
-        }
-    }
-    test {
-        dataSource {
-            dbCreate = "update"
-            url = "jdbc:h2:mem:testDb"
-        }
-    }
-    production {
-        dataSource {
-            dbCreate = "update"
-            url = "jdbc:h2:prodDb"
-        }
-    }
+	development {
+		dataSource {
+			dbCreate = "create-drop"
+			url = "jdbc:mysql://localhost/issues_dev?useUnicode=true&characterEncoding=utf8"
+		}
+	}
+
+	test {
+		dataSource {
+			dbCreate = "update"
+			url = "jdbc:mysql://localhost/issues_test?useUnicode=true&characterEncoding=utf8"
+		}
+	}
+
+	production {
+		dataSource {
+			dbCreate = "update"
+			url = "jdbc:mysql://localhost/issues?useUnicode=true&characterEncoding=utf8"
+		}
+		
+	}
+
 }

@@ -47,3 +47,7 @@ codenarc.reports = {
 	}
 }
 
+coverage {
+	exclusions = ["**/LoginController*", "**/LogoutController*" ]
+}
+

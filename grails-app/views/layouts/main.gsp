@@ -14,9 +14,6 @@
 	<link rel="apple-touch-icon" sizes="114x114" href="${resource(dir: 'images', file: 'apple-touch-icon-retina.png')}">
 	<link rel="stylesheet" href="${resource(dir: 'css', file: 'normalize.css')}" type="text/css">
 	<link rel="stylesheet" href="${resource(dir: 'css', file: 'main.css')}" type="text/css">
-
-
-
 	<g:javascript library="application"/>
 	<g:layoutHead/>
 </head>
@@ -25,15 +22,24 @@
 	<div class="topbar">
 
 		<div class="authentication menu">
+
 			<ul>
-				<li>Welcome Paul Woods</li>
-				<li><a href="#">Profile</a></li>
-				<li><a href="#">Logout</a></li>
+
+				<sec:ifLoggedIn>
+				<li>Welcome <g:link controller="user" action="profile" id="${grailsApplication.mainContext.springSecurityService.currentUser?.id}"><sec:loggedInUserInfo field="username"/></g:link></li>
+				<li><g:link controller="logout" action="index">Logout</g:link></li>
+				</sec:ifLoggedIn>
+
+				<sec:ifNotLoggedIn>
+				<li>Please <g:link controller="login" action="index">Login</g:link></li>
+			</sec:ifNotLoggedIn>
+
 			</ul>
+
 		</div>
 
 		<div class="search menu">
-			<g:form controller="search" action="search">
+			<g:form controller="search" action="lookup">
 			<ul>
 				<li><input type="search" placeholder="search for..."/></li>
 				<li><input type="submit" value="Search"/></li>
@@ -47,7 +53,7 @@
 
 	<div class="title"><h1>Issues</h1></div>
 
-	<div class="subtitle">We keep track of yours so you don't have to</div>
+	<div class="subtitle">We keep track of yours so you don't have to.</div>
 
 	<div class="main menu">
 		<ul>
@@ -55,6 +61,7 @@
 			<li><g:link controller="dashboard" action="index">Dashboard</g:link></li>
 			<li><g:link controller="project" action="index">Projects</g:link></li>
 			<li><g:link controller="issue" action="index">Issues</g:link></li>
+			<li><g:link controller="user" action="index">Users</g:link></li>
 			<li><g:link controller="help" action="index">Help</g:link></li>
 			<li><g:link controller="about" action="index">About</g:link></li>
 		</ul>

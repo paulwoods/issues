@@ -112,3 +112,9 @@ log4j = {
 grails.gorm.failOnError = true
 
 grails.plugin.cloudfoundry.appname = 'woods-issues'
+
+
+// Added by the Spring Security Core plugin:
+grails.plugins.springsecurity.userLookup.userDomainClassName = 'org.mrpaulwoods.issues.User'
+grails.plugins.springsecurity.userLookup.authorityJoinClassName = 'org.mrpaulwoods.issues.UserRole'
+grails.plugins.springsecurity.authority.className = 'org.mrpaulwoods.issues.Role'

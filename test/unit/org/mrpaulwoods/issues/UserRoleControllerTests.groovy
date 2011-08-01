@@ -8,16 +8,11 @@ import org.junit.*
 /**
  * See the API for {@link grails.test.mixin.web.ControllerUnitTestMixin} for usage instructions
  */
-@TestFor(SearchController)
-class SearchControllerTests {
+@TestFor(UserRoleController)
+class UserRoleControllerTests {
 
     @Test
     public void index() {
     	controller.index()
-    }
-    
-    @Test
-    public void lookup() {
-    	controller.lookup()
     }
 }

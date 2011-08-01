@@ -5,7 +5,8 @@ class SearchController {
     def index = { 
     }
     
-    def search = {
+    def lookup = {
+    	render text:"search not implemented"
     }
     
 }
