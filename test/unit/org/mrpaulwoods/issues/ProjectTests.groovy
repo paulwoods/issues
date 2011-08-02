@@ -26,15 +26,29 @@ class ProjectTests {
     
     @Test
     public void addUser() {
-    	def p1 = Project.addProject("project1")
     	def user = User.addUser("alpha")
-    	p1.addUser user, UserProject.Access.Admin
+    	def p1 = Project.addProject("project1")
+
+    	assert 0 == UserProject.count()
+    	def up = p1.addUser(user, UserProject.Access.Read)
+    	assert 1 == UserProject.count()
     	
-		assert 1 == UserProject.count()
-		assert user == UserProject.list()[0].user
-		assert p1 == UserProject.list()[0].project
+    	assert user == UserProject.list()[0].user
     }
     
+    @Test
+    public void addUser_duplicate() {
+    	def user = User.addUser("alpha")
+    	def p1 = Project.addProject("project1")
+
+    	assert 0 == UserProject.count()
+    	def up1 = p1.addUser(user, UserProject.Access.Read)
+    	def up2 = p1.addUser(user, UserProject.Access.Read)
+    	assert 1 == UserProject.count()
+    	
+    	assert up1 == up2
+    }
+   
     @Test
     public void getUsers() {
     

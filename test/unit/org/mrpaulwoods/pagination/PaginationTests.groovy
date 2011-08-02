@@ -36,8 +36,45 @@ class PaginationTests {
 		assert "col1" == params.sort
 		assert "asc" == params.order		
 	}
+	
+	@Test
+	public void maximum() {
+		
+		pagination.grailsApplication = [ config : [ grails : [ pagination : null ] ] ]
+		assert 1000 == pagination.maximum
 
+		pagination.grailsApplication = [ config : [ grails : null ] ]
+		assert 1000 == pagination.maximum
+	
+		pagination.grailsApplication = [ config : null ]
+		assert 1000 == pagination.maximum
+	
+		pagination.grailsApplication = null
+		assert 1000 == pagination.maximum
+	
+	}
+	
+	@Test
+	public void normal() {
+		
+		pagination.grailsApplication = [ config : [ grails : [ pagination : null ] ] ]
+		assert 10 == pagination.normal
+
+		pagination.grailsApplication = [ config : [ grails : null ] ]
+		assert 10 == pagination.normal
+	
+		pagination.grailsApplication = [ config : null ]
+		assert 10 == pagination.normal
+	
+		pagination.grailsApplication = null
+		assert 10 == pagination.normal
+	
+	}
+	
 }
+	
+
+
 
 /*
 class Pagination {

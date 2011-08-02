@@ -13,5 +13,5 @@ class UserProjectTests {
 		assert true == new UserProject(access:UserProject.Access.Read).canAccess()
 		assert false == new UserProject(access:UserProject.Access.None).canAccess()
     }
-
+    
 }
