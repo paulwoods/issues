@@ -12,12 +12,13 @@
 	<link rel="shortcut icon" href="${resource(dir: 'images', file: 'favicon.ico')}" type="image/x-icon">
 	<link rel="apple-touch-icon" href="${resource(dir: 'images', file: 'apple-touch-icon.png')}">
 	<link rel="apple-touch-icon" sizes="114x114" href="${resource(dir: 'images', file: 'apple-touch-icon-retina.png')}">
-	<link rel="stylesheet" href="${resource(dir: 'css', file: 'normalize.css')}" type="text/css">
-	<link rel="stylesheet" href="${resource(dir: 'css', file: 'main.css')}" type="text/css">
-	<g:javascript library="jquery-1.6.2.js"/>
-	<g:javascript library="application"/>
+	<link href="http://fonts.googleapis.com/css?family=Droid+Sans" rel="stylesheet" type="text/css">
+	<link href='http://fonts.googleapis.com/css?family=Cabin+Sketch:700' rel='stylesheet' type='text/css'>
+	<r:require modules="core"/>
+	<r:layoutResources/>
 	<g:layoutHead/>
 </head>
+
 <body>
 
 	<div class="topbar">
@@ -83,6 +84,7 @@
 
 	<div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>
 
+	<r:layoutResources/>
 
 </body>
 </html>

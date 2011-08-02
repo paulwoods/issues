@@ -119,3 +119,14 @@ grails.plugins.springsecurity.userLookup.userDomainClassName = 'org.mrpaulwoods.
 grails.plugins.springsecurity.userLookup.authorityJoinClassName = 'org.mrpaulwoods.issues.UserRole'
 grails.plugins.springsecurity.authority.className = 'org.mrpaulwoods.issues.Role'
 
+grails.resources.modules = {
+
+    core {
+        dependsOn 'jquery'
+		resource url:'/css/normalize.css'
+		resource url:'/css/main.css'
+        resource url:'/js/modernizr-2.0.6.js', disposition: 'head'
+        resource url:'/js/application.js'
+    }
+
+}
