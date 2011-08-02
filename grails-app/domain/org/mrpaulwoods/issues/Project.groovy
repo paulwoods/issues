@@ -34,5 +34,15 @@ class Project {
     	up
     }
     
+    List<UserProject> getUserProjects() {
+    	UserProject.findAllByProject(this).findAll { userProject -> 
+    		userProject.canAccess() 
+    	}
+    }
+
+    List<User> getUsers() {
+    	userProjects.user
+    }
+    
     
 }

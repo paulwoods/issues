@@ -118,3 +118,4 @@ grails.plugin.cloudfoundry.appname = 'woods-issues'
 grails.plugins.springsecurity.userLookup.userDomainClassName = 'org.mrpaulwoods.issues.User'
 grails.plugins.springsecurity.userLookup.authorityJoinClassName = 'org.mrpaulwoods.issues.UserRole'
 grails.plugins.springsecurity.authority.className = 'org.mrpaulwoods.issues.Role'
+

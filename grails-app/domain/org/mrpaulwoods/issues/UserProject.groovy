@@ -18,7 +18,11 @@ class UserProject {
 		Edit,
 		Admin,
 	}
-
+	
+	boolean canAccess() {
+    	[Access.Admin, Access.Read, Access.Edit].contains(access)
+	}
+	
 
 }
 

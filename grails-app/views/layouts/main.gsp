@@ -14,6 +14,7 @@
 	<link rel="apple-touch-icon" sizes="114x114" href="${resource(dir: 'images', file: 'apple-touch-icon-retina.png')}">
 	<link rel="stylesheet" href="${resource(dir: 'css', file: 'normalize.css')}" type="text/css">
 	<link rel="stylesheet" href="${resource(dir: 'css', file: 'main.css')}" type="text/css">
+	<g:javascript library="jquery-1.6.2.js"/>
 	<g:javascript library="application"/>
 	<g:layoutHead/>
 </head>
@@ -32,7 +33,7 @@
 
 				<sec:ifNotLoggedIn>
 				<li>Please <g:link controller="login" action="index">Login</g:link></li>
-			</sec:ifNotLoggedIn>
+				</sec:ifNotLoggedIn>
 
 			</ul>
 
@@ -49,6 +50,13 @@
 
 		<br class="clear"/>
 
+	</div>
+
+
+	<div>
+		<g:if test="${flash.message}">
+		<div class="message">${flash.message}</div>
+		</g:if>
 	</div>
 
 	<div class="title"><h1>Issues</h1></div>

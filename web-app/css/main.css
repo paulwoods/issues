@@ -78,7 +78,7 @@ a:hover {
 }
 
 table {
-	width:50%;
+	width:100%;
 }
 
 caption {
@@ -165,3 +165,28 @@ th.asc a {
 th.desc a {
     background-image: url(../images/skin/sorted_desc.gif);
 }
+
+.message {
+	background-color: #ffffaa;
+	padding: 10px;
+}
+
+div.error {
+	background-color: #ffc0cb;
+	padding: 10px;
+	margin-bottom: 1em;
+}
+
+div.error ul {
+	list-style: none;
+}
+
+input.error {
+	border-color: red;
+}
+
+table.edit th {
+	width: 0;
+}
+
+
