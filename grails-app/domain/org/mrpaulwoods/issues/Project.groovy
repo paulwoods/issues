@@ -12,10 +12,23 @@ class Project {
     	name nullable:false, blank:false, unique:true, maxSize:100
     }
     
-    def getIssues() {
-    	Issue.findAllByProject this
+	def beforeDelete() {
+		Project.withNewSession {
+			UserProject.findAllByProject(this)*.delete()
+		}
+	}
+	
+    List<UserProject> getUserProjects() {
+    	UserProject.findAllByProject(this).findAll { userProject -> 
+    		userProject.canAccess() 
+    	}
     }
-    
+
+    List<User> getUsers() {
+    	userProjects.user
+    }
+
+
     static Project addProject(String name) {
     	def project = Project.findByName(name)
     	if(!project) {
@@ -34,15 +47,6 @@ class Project {
     	up
     }
     
-    List<UserProject> getUserProjects() {
-    	UserProject.findAllByProject(this).findAll { userProject -> 
-    		userProject.canAccess() 
-    	}
-    }
-
-    List<User> getUsers() {
-    	userProjects.user
-    }
     
     
 }

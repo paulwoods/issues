@@ -29,11 +29,13 @@ class BootStrap {
     }
     
     private void sample1() {
-    	def project = Project.addProject("issuetracker")
+    	def project = Project.addProject("Issue Tracker")
     	project.addUser User.findByUsername("paulwoods"), UserProject.Access.Admin
     	project.addUser User.findByUsername("read"), UserProject.Access.Read
     	project.addUser User.findByUsername("edit"), UserProject.Access.Edit
     	project.addUser User.findByUsername("none"), UserProject.Access.None
+    	
+    	
     }
     
 }
