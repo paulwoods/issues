@@ -20,4 +20,12 @@ class Role {
 		role
 	}
 	
+	static Role getUser() {
+		Role.findByAuthority("ROLE_USER")
+	}
+	
+	static Role getAdmin() {
+		Role.findByAuthority("ROLE_ADMIN")
+	}
+	
 }

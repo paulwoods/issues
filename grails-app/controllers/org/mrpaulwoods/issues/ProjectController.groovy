@@ -92,7 +92,10 @@ import grails.plugins.springsecurity.Secured
 			
 			project.delete()
 			
+			log.debug "deleted project $project.name"
+			
 			flash.message = "The project $project.name has been deleted."
+			
 			redirect action:"list"
 		}
 	}

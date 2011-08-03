@@ -12,27 +12,30 @@ class BootStrap {
     }
     
     def security() {
-    	def admin = Role.addRole("ROLE_ADMIN")
-    	def user = Role.addRole("ROLE_USER")
+    	Role.addRole("ROLE_ADMIN")
+    	Role.addRole("ROLE_USER")
     	
     	def paulwoods = User.addUser("paulwoods")
-    	UserRole.addUserRole paulwoods, admin
+    	UserRole.addUserRole paulwoods, Role.admin
     	
-    	def read = User.addUser("read")
-    	UserRole.addUserRole read, user
+    	def admin = User.addUser("admin")
+    	UserRole.addUserRole admin, Role.user
     	
     	def edit = User.addUser("edit")
-    	UserRole.addUserRole edit, user
+    	UserRole.addUserRole edit, Role.user
+    	
+    	def read = User.addUser("read")
+    	UserRole.addUserRole read, Role.user
     	
     	def none = User.addUser("none")
-    	UserRole.addUserRole none, user
+    	UserRole.addUserRole none, Role.user
     }
     
     private void sample1() {
     	def project = Project.addProject("Issue Tracker")
-    	project.addUser User.findByUsername("paulwoods"), UserProject.Access.Admin
-    	project.addUser User.findByUsername("read"), UserProject.Access.Read
+    	project.addUser User.findByUsername("admin"), UserProject.Access.Admin
     	project.addUser User.findByUsername("edit"), UserProject.Access.Edit
+    	project.addUser User.findByUsername("read"), UserProject.Access.Read
     	project.addUser User.findByUsername("none"), UserProject.Access.None
     	
     	

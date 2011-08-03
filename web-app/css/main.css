@@ -75,6 +75,9 @@ a:hover {
 }
 
 table {
+}
+
+.fullwidth {
 	width:100%;
 }
 
@@ -85,7 +88,7 @@ caption {
 
 td,
 th {
-
+	font-weight: normal;
 	padding: 0.25em;
 }
 
@@ -149,10 +152,13 @@ tbody.hover tr:hover {
 .paginate .nextLink {
 }
 
+th.sortable a {
+   	padding-right: 1em;
+}
+
 th.asc a, th.desc a {
     background-position: right;
     background-repeat: no-repeat;
-   	padding-right: 1em;
 }
 
 th.asc a {
@@ -188,5 +194,14 @@ table.edit th {
 
 .capitalize {
 	text-transform: capitalize;
+}
+
+.dialog .field {
+	width: 1%;
+	white-space: nowrap;
+	padding-right: 1em;
+}
+
+.dialog .value {
 }
 

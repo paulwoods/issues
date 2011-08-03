@@ -33,6 +33,8 @@ class Project {
     	def project = Project.findByName(name)
     	if(!project) {
     		project = new Project(name:name).save()
+    		
+    		project.log.debug "added project ${project.dump()}"
     	}
     	project
     }
@@ -41,6 +43,8 @@ class Project {
     	def up = UserProject.findByUserAndProject(user, this)
     	if(!up) {
     		up = new UserProject(user:user, project:this)
+    		
+    		log.debug "added user $user.username to project $name"
     	}
     	up.access = access
     	up.save()

@@ -35,20 +35,44 @@ class User {
 			encodePassword()
 		}
 	}
-
+	
+	def beforeDelete() {
+		User.withNewSession {
+			userRoles*.delete()
+			userProjects*.delete()
+		}
+	}
+	
 	private void encodePassword() {
-		if(springSecurityService) { // for unit testing only
+		if(springSecurityService) { 
 			password = springSecurityService.encodePassword(password)
 		}
 	}
+	
+	void changePasswordToUsername() {
+		log.debug "resetting password for $username"
+		password = username
+	}
+	
 	
 	static User addUser(String username) {
 		def user = User.findByUsername(username)
 		if(!user) {
 			user = new User(username:username, password:username)
 			user.save()
+			
+			user.log.debug "added user ${user.dump()}"
 		}
 		user
 	}
+	
+	List<UserRole> getUserRoles() {
+		UserRole.findAllByUser this
+	}
+	
+	List<UserProject> getUserProjects() {
+		UserProject.findAllByUser this
+	}
+	
 	
 }

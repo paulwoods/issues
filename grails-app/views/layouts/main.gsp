@@ -28,12 +28,12 @@
 			<ul>
 
 				<sec:ifLoggedIn>
-				<li>Welcome <g:link controller="user" action="profile" id="${grailsApplication.mainContext.springSecurityService.currentUser?.id}"><sec:loggedInUserInfo field="username"/></g:link></li>
+				<li>Welcome <g:link controller="user" action="show" id="${grailsApplication.mainContext.springSecurityService.currentUser?.id}"><sec:loggedInUserInfo field="username"/></g:link></li>
 				<li><g:link controller="logout" action="index">Logout</g:link></li>
 				</sec:ifLoggedIn>
 
 				<sec:ifNotLoggedIn>
-				<li>Please <g:link controller="login" action="index">Login</g:link></li>
+				<li>Please <g:link controller="login" action="index">login</g:link> or <g:link controller="user" action="register">register</g:link></li>
 				</sec:ifNotLoggedIn>
 
 			</ul>
