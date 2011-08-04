@@ -4,7 +4,7 @@ class User {
 
 	def springSecurityService
 	
-	static transients = [ "authorities" ]
+	static transients = [ "authorities","userProjects","userRoles" ]
 	
 	String username
 	String password

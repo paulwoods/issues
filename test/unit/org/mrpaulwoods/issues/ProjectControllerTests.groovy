@@ -4,7 +4,7 @@ import grails.test.mixin.*
 import org.junit.*
 
 @TestFor(ProjectController)
-@Mock([Project,Issue,UserProject,User])
+@Mock([Project,Issue,UserProject,User,UserRole])
 class ProjectControllerTests {
 
     @Test

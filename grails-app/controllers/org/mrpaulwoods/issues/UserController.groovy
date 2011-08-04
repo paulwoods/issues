@@ -83,12 +83,13 @@ class UserController {
     }
     
     def install = { RegisterCommand cmd ->
+    
     	if(cmd.hasErrors()) {
     		cmd.errors.allErrors.each { 
     			log.error it
     		}
     		
-    		flash.message = "Unable to register the user"
+    		flash.message = "Unable to register the user."
     		render view:"register", model:[cmd:cmd]
     		return
     	}
@@ -96,14 +97,14 @@ class UserController {
     	def user = new User(username:cmd.username, password:cmd.password1)
 		if(user.validate() && user.save()) {
 
-    		UserRole.addUserRole user, Role.user
+			UserRole.addUserRole user, Role.user
 
 			log.debug "registered user $user.username"
 
 			flash.message = "User $user.username was registered."
 			redirect action:"show", id:user.id
 		} else {
-			flash.message = "Unable to registered the user."
+			flash.message = "Unable to register the user."
 			render view:"register", model:[cmd:cmd]
 		}
     	
@@ -122,7 +123,7 @@ class UserController {
     			log.error it
     		}
     		
-    		flash.message = "Unable to change the password"
+    		flash.message = "Unable to change the password."
     		render view:"password", model:[cmd:cmd]
     		return
     	}
@@ -165,7 +166,7 @@ class UserController {
 
 			} else {
 				flash.message = "Unable to reset the password."
-				render view:"reset", model:[cmd:cmd]
+				render view:"reset", model:[user:user]
 			}
 
     	}

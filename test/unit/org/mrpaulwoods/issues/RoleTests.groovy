@@ -22,4 +22,17 @@ class RoleTests {
 		assert r2 == r1
     }
     
+    @Test
+    public void roleUser() {
+    	def r = Role.addRole("ROLE_USER")
+    	assert r == Role.user
+    }
+    
+    @Test
+    public void roleAdmin() {
+    	def r = Role.addRole("ROLE_ADMIN")
+    	assert r == Role.admin
+    }
+    
+    
 }

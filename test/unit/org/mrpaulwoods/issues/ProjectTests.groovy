@@ -84,4 +84,30 @@ class ProjectTests {
 		assert true == p1.users.contains(b)
 	}
 	
+	@Test
+	public void beforeDeleteRemovedTheUserProjectObjects() {
+		def p = Project.addProject("p1")
+		def u1 = User.addUser("alpha")
+		def u2 = User.addUser("beta")
+		
+		p.addUser u1, UserProject.Access.Admin
+		p.addUser u2, UserProject.Access.Admin
+		
+		assert 2 == UserProject.count()
+		
+		p.beforeDelete()
+		
+		assert 0 == UserProject.count()
+	}
+	
+	
 }
+
+/*
+	def beforeDelete() {
+		Project.withNewSession {
+			UserProject.findAllByProject(this)*.delete()
+		}
+	}
+
+*/

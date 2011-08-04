@@ -14,7 +14,7 @@ class Project {
     
 	def beforeDelete() {
 		Project.withNewSession {
-			UserProject.findAllByProject(this)*.delete()
+			UserProject.findAllByProject(this)*.delete(flush:true)
 		}
 	}
 	
