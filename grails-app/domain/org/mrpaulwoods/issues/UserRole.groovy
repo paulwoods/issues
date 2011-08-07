@@ -1,7 +1,9 @@
 package org.mrpaulwoods.issues
 
 import org.apache.commons.lang.builder.HashCodeBuilder
-
+import groovy.transform.ToString
+	
+@ToString
 class UserRole implements Serializable {
 
 	User user

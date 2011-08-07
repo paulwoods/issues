@@ -1,5 +1,8 @@
 package org.mrpaulwoods.issues
 
+import groovy.transform.ToString
+	
+@ToString
 class UserProject {
 
 	User user

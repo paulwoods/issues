@@ -47,6 +47,8 @@ codenarc.reports = {
 	}
 }
 
+codenarc.propertiesFile = 'grails-app/conf/codenarc.properties'
+
 coverage {
 	exclusions = ["**/LoginController*", "**/LogoutController*" ]
 }
