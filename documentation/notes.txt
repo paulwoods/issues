@@ -1,0 +1,65 @@
+
+add a user
+
+	User user = User.add(name:xxx, password:xxx)
+
+make a user a system admin
+
+	user.makeAdmin()
+
+make a user a regular user
+
+	user.makeUser()
+
+reset user password
+
+	user.resetPassword()
+	
+pre-register a user
+	
+	String code = User.preRegister(name:xxx, email:xxx)
+	
+register a user
+
+	User user = User.register(String code)
+
+create a project
+
+	Project project = Project.add(name:xxx, description:xxx)
+
+add a user to a project
+
+	UserProject up = project.add(User user, UserProject.Access.xxx)
+	
+remove a user from a project
+
+	project.remove(User user)
+	
+list the users for a project
+
+	List<UserProject> userProjects = projects.users()
+	
+open a issue
+
+	Issue issue = project.open(name:"issue")
+	
+list the issues for a project
+
+	List<Issue> issues = project.issues()
+	
+comment on a issue
+
+	Comment comment = issue.comment(text:xxx)
+	
+assign a issue
+
+	issue.assign(User user)
+	
+close a issue
+
+	issue.close()
+
+show the comments for a issue
+
+	List<Comment> issue.comments()
+	

@@ -5,7 +5,7 @@
 </head>
 <body>
 
-<h2>About</h2>
+<h2 class="capitalize"><g:meta name="app.name"/> <g:meta name="app.version"/></h2>
 
 <ul>
 <li>A sample issue tracker (under development) written in <a href="http://www.grails.org">Grails</a></li>
@@ -14,16 +14,14 @@
 <li>twitter <a href="http://twitter.com/mr_paul_woods">@mr_paul_woods</a></li>
 <li>blog <a href="https://mrpaulwoods.wordpress.com">https://mrpaulwoods.wordpress.com</a></li>
 <li>source code <a href="https://github.com/paulwoods/issues">https://github.com/paulwoods/issues</a></li>
+<li>continuous Integration <a href="#">TBD</a></li>
 </ul>
 
 
 <h2>Technology</h2>
 
 <ul>
-<li class="capitalize"><g:meta name="app.name"/> <a href="http://cna0459765.am.dhcp.ti.com:9001/hudson/job/<g:meta name="app.name"/>" title="Click for access to the continuous integration website."><g:meta name="app.version"/></a></li>
-<li>Developer: <a href="mailto:pwoods@ti.com" title="Your humble software engineer.">Paul Woods</a></li>
 <li>Grails: <a href="http://grails.org" title="The web based framework quality development, quickly."><g:meta name="app.grails.version"/></a></li>
-
 <li>Java: <a href="http://java.oracle.com" title="The foundation of enterprise development.">${System.getProperty('java.version')}</a></li>
 <li>jQuery: <a id="jqueryversion" href="http://jquery.com" title="Tool for simplifying javascript development.">0.0.0</a></li>
 <li>Modernizr: <a id="modernizrversion" href="http://modernizr.com" title="Javascript library for handling differences in browsers.">0.0.0</a></li>

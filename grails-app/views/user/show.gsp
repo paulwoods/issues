@@ -13,8 +13,9 @@
 			<li><g:link controller="user" action="list">List</g:link> all users</li>
 			<li><g:link controller="user" action="create">Create</g:link> a user</li>
 			<li><g:link controller="user" action="edit" id="${user.id}">Edit</g:link> this user</li>
-			<li><g:link controller="user" action="reset" id="${user.id}">Reset</g:link> the password</li>
-			<li><g:link controller="user" action="password" id="${user.id}">Change</g:link> the password</li>
+			<li><g:link controller="password" action="reset" id="${user.id}">Reset</g:link> the password</li>
+			<li><g:link controller="password" action="password" id="${user.id}">Change</g:link> the password</li>
+			<li><g:link controller="user" action="join" id="${user.id}">Join</g:link> projects</li>
 		</ul>
 
 	</div>
@@ -59,6 +60,11 @@
 		<tr>
 			<td class="field">Password Expired</td>
 			<td class="value"><g:formatBoolean boolean="${user.passwordExpired}" true="Yes" false="No" /></td>
+		</tr>
+
+		<tr>
+			<td class="field">Role</td>
+			<td class="value">${user.userRoles.role.authority.sort().join(',')}</td>
 		</tr>
 
 		</tbody>

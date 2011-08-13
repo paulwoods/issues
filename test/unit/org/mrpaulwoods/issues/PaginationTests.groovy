@@ -1,4 +1,4 @@
-package org.mrpaulwoods.pagination
+package org.mrpaulwoods.issues
 
 import grails.test.mixin.*
 import org.junit.*

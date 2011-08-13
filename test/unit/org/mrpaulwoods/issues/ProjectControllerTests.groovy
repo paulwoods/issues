@@ -15,7 +15,7 @@ class ProjectControllerTests {
     
     @Test
     public void list() {
-    	def pagination = mockFor(org.mrpaulwoods.pagination.Pagination)
+    	def pagination = mockFor(org.mrpaulwoods.issues.Pagination)
     	pagination.demand.fix(1..1) { Map p, String c, String o -> }
     	controller.pagination = pagination.createMock()
     	

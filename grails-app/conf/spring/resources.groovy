@@ -2,8 +2,13 @@
 
 beans = {
 
-	pagination(org.mrpaulwoods.pagination.Pagination) { bean ->
+	pagination(org.mrpaulwoods.issues.Pagination) { bean ->
+		bean.scope = "prototype"
+	}
+
+	controllerHelper(org.mrpaulwoods.issues.ControllerHelper) { bean ->
 		bean.scope = "prototype"
 	}
 
 }
+

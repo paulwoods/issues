@@ -1,4 +1,4 @@
-package org.mrpaulwoods.pagination
+package org.mrpaulwoods.issues
 
 /**
  * Pagination sets the max, offset, sort and order values of a map

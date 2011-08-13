@@ -33,7 +33,7 @@
 				</sec:ifLoggedIn>
 
 				<sec:ifNotLoggedIn>
-				<li>Please <g:link controller="login" action="index">login</g:link> or <g:link controller="user" action="register">register</g:link></li>
+				<li>Please <g:link controller="login" action="index">login</g:link> or <g:link controller="registration" action="register">register</g:link></li>
 				</sec:ifNotLoggedIn>
 
 			</ul>

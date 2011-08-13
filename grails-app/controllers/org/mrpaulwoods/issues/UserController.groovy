@@ -2,15 +2,23 @@ package org.mrpaulwoods.issues
 
 import grails.plugins.springsecurity.Secured
 
+@Secured(["isAuthenticated()"])
 class UserController {
 
 	def pagination
-
+	def springSecurityService
+	def controllerHelper
+	
+	def beforeInterceptor = {
+		log.debug "#"*80
+		log.debug "login user=" + springSecurityService.currentUser?.username
+		log.debug "params=" + params
+	}
+	
     def index() {
     	redirect action:"list", params:"params"
     }
     
-	@Secured(['ROLE_USER','ROLE_ADMIN'])
     def list() {
 		pagination.fix params, "username", "asc"
 		def users = User.createCriteria().list(params) { }
@@ -71,108 +79,21 @@ class UserController {
     
     def delete() {
     	withUser { user ->
+    	
+    		boolean selfDelete = springSecurityService.currentUser.id == user.id
+    	
     		user.delete()
     		log.debug "deleted user $user.username"
     		flash.message = "User $user.username was deleted."
-    		redirect action:"list"
-    	}
-    }
-
-    def register() {
-    	[cmd:new RegisterCommand()]
-    }
-    
-    def install = { RegisterCommand cmd ->
-    
-    	if(cmd.hasErrors()) {
-    		cmd.errors.allErrors.each { 
-    			log.error it
-    		}
     		
-    		flash.message = "Unable to register the user."
-    		render view:"register", model:[cmd:cmd]
-    		return
+    		if(selfDelete) {
+    			redirect controller:"logout"
+    		} else {
+    			redirect action:"list"
+    		}
     	}
-    	
-    	def user = new User(username:cmd.username, password:cmd.password1)
-		if(user.validate() && user.save()) {
-
-			UserRole.addUserRole user, Role.user
-
-			log.debug "registered user $user.username"
-
-			flash.message = "User $user.username was registered."
-			redirect action:"show", id:user.id
-		} else {
-			flash.message = "Unable to register the user."
-			render view:"register", model:[cmd:cmd]
-		}
-    	
     }
 	    
-    def password() {
-    	withUser { user ->
-    		[cmd:new ChangePasswordCommand(user:user)]
-    	}
-    }
-    
-    def change(ChangePasswordCommand cmd) {
-    	
-    	if(cmd.hasErrors()) {
-    		cmd.errors.allErrors.each { 
-    			log.error it
-    		}
-    		
-    		flash.message = "Unable to change the password."
-    		render view:"password", model:[cmd:cmd]
-    		return
-    	}
-    	
-    	def user = cmd.user
-    	user.password = cmd.password1
-    	
-		if(user.validate() && user.save()) {
-
-			log.debug "change password user $user.username"
-
-			flash.message = "User $user.username password was changed."
-			redirect action:"show", id:user.id
-			
-		} else {
-			flash.message = "Unable to change the password."
-			render view:"password", model:[cmd:cmd]
-		}
-		
-	}
-    
-    def reset() {
-    	withUser { user ->
-    		[user:user]
-    	}
-    }
-    
-    def reset_password() {
-    
-    	withUser { user ->
-    	
-			user.changePasswordToUsername()
-
-			if(user.validate() && user.save()) {
-
-				log.debug "reset password user $user.username"
-
-				flash.message = "User $user.username password was reset."
-				redirect action:"show", id:user.id
-
-			} else {
-				flash.message = "Unable to reset the password."
-				render view:"reset", model:[user:user]
-			}
-
-    	}
-    	
-    }
-    
     private def withUser(String id="id", Closure closure) {
     	def user = User.get(params[id])
     	if(user) {
@@ -183,39 +104,33 @@ class UserController {
     	}
     }
     
+    def join() {
+    	withUser { user ->
+    		[user:user]
+    	}
+    }
+    
+    def attach() {
+    
+    	withUser { user ->
+			
+			User.withTransaction { status ->
+				
+				user.userProjects*.delete()				
+				
+				controllerHelper.getListOfLongs(params.selected).each { project_id ->
+    				println "XXXXXXXXXXXXXXXXXXXXXXXX"
+    				UserProject.add user, Project.get(project_id), UserProject.Access.Admin
+    				
+				}
+				
+			}
+			
+			redirect action:"show", id:user.id
+
+    	}
+    	
+    }
+
 }
-
-class RegisterCommand {
-	String username
-	String password1
-	String password2
-	
-	static constraints = {
-		username nullable:false, blank:false
-		password1 nullable:false, blank:false, validator: { val, obj ->
-    		obj.password1 == obj.password2
-		}
-		password2 nullable:false, blank:false
-	}
-	
-}
-
-class ChangePasswordCommand {
-
-	User user
-	String password
-	String password1
-	String password2
-	
-	static constraints = {
-		password nullable:false, blank:false, validator: { val, obj ->
-    		obj.user.password == obj.user.springSecurityService.encodePassword(obj.password)
-		}
-		password1 nullable:false, blank:false, validator: { val, obj ->
-    		obj.password1 == obj.password2
-		}
-		password2 nullable:false, blank:false
-	}
-	
-}
-
+

@@ -26,6 +26,14 @@ class UserProject {
     	[Access.Admin, Access.Read, Access.Edit].contains(access)
 	}
 	
+	static UserProject add(User user, Project project, Access access) {
+		def up = UserProject.findByUserAndProject(user, project)
+		if(!up) {
+			up = new UserProject(user:user, project:project, access:access)
+			up.save()
+		}
+		up
+	}
 
 }
 
